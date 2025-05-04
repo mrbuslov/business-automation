@@ -1,59 +1,42 @@
-# Receipt Scanner: Automated Receipt Data Extraction
+# Receipt Processing Automation
 
-This directory contains a **receipt scanner script** that automates the process of extracting data from receipt images
-and generates a structured **DOCX report**. The program uses the **Anthropic AI model** to accurately extract text and
-tabular data from receipts, making expense tracking and record-keeping effortless.
+This script **automates the processing of receipts** using the Entropiq model. It takes files from the `Temp` folder or any other folder specified by the user, scans all receipts, and **generates a `.docx` document with a full list of expenses**.
 
-## How It Works
+## Main Features
 
-1. Place your receipt images in the designated folder.
-2. Run the script to automatically process all images.
-3. The script extracts relevant data and compiles it into a formatted DOCX file with a table of receipts.
-
-## Requirements
-
-- Python 3.x
-- Anthropic API access
-- Dependencies listed in `requirements.txt`
+- Automatic collection of receipts from the specified folder
+- Receipt data recognition using the **Entropiq** model
+- Creation and updating of a `.docx` report summarizing expenses
+- **Iterative workflow**: you can edit the report and regenerate it until you achieve the desired result
+- The script returns a log of its work and saves the final file to the specified directory
 
 ## Getting Started
 
-1. Set up your Anthropic API key.
-2. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Place your receipt images in the `receipts/` folder.
-4. Run the script:
-   ```bash
-   python receipts_scanner.py
-   ```
-5. Find the generated DOCX report in the output directory.
+1. Make sure you have a `.env` file with the following variables:
+   - `ENTROPIQ_KEY` — your Entropiq API key
+   - `FOLDER_PATH` — the path to the folder containing receipts and where the generated document will be saved
 
-## Features
+   ➔ See the `.env.example` file for reference.
 
-- **OCR for receipts** using Anthropic AI
-- Batch processing of all receipt images in the provided folder
-- Automated extraction of key fields: date, merchant, items, prices, total
-- **DOCX report generation** with a clean, structured table of all extracted data
-- Ideal for **expense tracking, bookkeeping, and accounting automation**
+2. **Alternative:** you can hardcode these parameters directly in the `consts.py` file (located in the `app` folder), but using `.env` is recommended for security and flexibility.
 
-## Benefits
+3. Place your receipts (files) into the folder specified by `FOLDER_PATH`.
 
-- Save time on manual receipt entry
-- Improve accuracy of expense reports
-- Simplify tax preparation and auditing
-- Scalable for personal, small business, or enterprise use
+4. Run the script and follow the instructions in the command line.
 
-## Use Cases
+## How to run
+```shell
+python -W ignore main.py
+```
 
-- Small businesses looking for **automated receipt scanning**
-- Freelancers needing **expense report automation**
-- Accountants seeking faster **data extraction from receipts**
-- Anyone managing large volumes of receipts for reimbursement or compliance
+## Examples
 
----
+You can find ready-made test receipts in the **Received Examples** folder.
 
-**Keywords:** receipt scanner, automated receipt data extraction, OCR for receipts, receipt to DOCX, expense tracking
-automation, bookkeeping script, accounting automation, Anthropic OCR script, extract text from receipts, business
-expense report automation, Python receipt scanner, AI-powered receipt processing.
+Below is an image showing what the final report will look like:
+
+![result of generated docx](app/result_example_docx.png)
+
+## Keywords
+
+cheque processing, Entropiq receipt scanning, docx report generation, accounting automation, expense report, automate expense tracking, receipt OCR, bookkeeping script, financial reporting, iterative document update.
